@@ -1,0 +1,141 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>web animation</title>
+	<script type="text/javascript" src="https://cdn.rawgit.com/web-animations/web-animations-js/master/web-animations-next.min.js"></script>
+	<style>
+
+.animation {
+	-webkit-animation-name: bounceball;
+	 -webkit-animation-duration: 1s;
+	 -webkit-animation-iteration-count: infinite;
+	 -webkit-animation-direction: alternate;
+	 -webkit-animation-delay: 0;
+	-webkit-animation-timing-function: ease-out;
+	animation-name: bounceball;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-delay: 0;
+
+	timing-function: ease-out;
+
+	animation-play-state: running;
+	animation-fill-mode: none;
+}
+.ball {
+    background: Chocolate;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    bottom: 0;
+
+}
+ @keyframes bounceball {
+    from { bottom: 0; height: 90px; }
+    10%  { bottom: 0; height: 160px; }
+    to   { bottom: 50%; }
+}
+
+
+ section {
+	 position: relative;
+	 width: 100%;
+	height: 50%;
+	float: left;
+ }
+ section >section {
+	 position: relative;
+	 width: 200px;
+   height: 100%;
+   float: left;
+ }
+ a {
+	 position: absolute;
+ color: #fff;
+ text-decoration: none;
+ font-size: 22px;
+ text-transform: uppercase;
+ background: #1c688e;
+ padding: 10px 22px;
+ right: 3%;
+     top: 17%;
+ }
+	</style>
+</head>
+
+<body>
+
+ <section class="scriptAnimation">
+	  <h2>Web Animation</h2>
+	     	<a href="#" id="add">Add</a>
+		 <section>
+		 	<div id="ball" class="ball"></div>
+	 </section>
+</section>
+<section class="cssAnimation">
+	<h2>css Animation</h2>
+	<a href="#" id="addcss">Add</a>
+	<section>
+		 <div class="ball animation"></div>
+</section>
+</section>
+	<script>
+	   var ball = document.getElementById("ball");
+
+	  var keyframe = [
+		  { bottom:'0px',height: '90px', offset: 0 },
+		  { bottom:'0px',height: '160px', offset: 0.1 },
+		  { bottom:'50%',height: '160px', offset: 1 }
+	  ]
+	 var timing = {
+		duration:1000,
+		iterations:Infinity,
+		fill:'forwards',
+		direction:'alternate',
+		easing:'ease-out',
+		delay:0
+	 }
+	 var ballOne = ball.animate(keyframe,timing);
+    function createBall() {
+		 var div = document.createElement("div");
+   	 div.classList.add("ball");
+		 return div;
+	 }
+	   function crateSection() {
+      var section = document.createElement("section");
+		var secDiv  = document.querySelector("section").appendChild(section);
+       return secDiv;
+		}
+	 function ballAnimate() {
+       var div = createBall();
+		 var section = crateSection();
+		 var newBallAnimate = div.animate(keyframe,timing);
+	     newBallAnimate.startTime = ballOne.startTime;
+      section.appendChild(div);
+	 }
+	 function cssBall() {
+		var div = createBall();
+		div.classList.add("animation");
+		var section = crateSection();
+		var cssDiv = document.querySelector(".cssAnimation").appendChild(section);
+		cssDiv.appendChild(div);
+	 }
+	 document.getElementById("add").addEventListener("click",function(){
+    ballAnimate();
+	 });
+	 document.getElementById("addcss").addEventListener("click",function(){
+
+
+
+
+   });
+
+	</script>
+
+
+</body>
+
+</html>

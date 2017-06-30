@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>web animation</title>
+	<style>
+		#ball {
+			background: Chocolate;
+			border-radius: 50%;
+			width: 160px;
+			height: 160px;
+			position: absolute;
+			bottom: 0;
+			left: 0%;
+		}
+	</style>
+	<script type="text/javascript" src="https://cdn.rawgit.com/web-animations/web-animations-js/master/web-animations-next.min.js"></script>
+</head>
+
+<body>
+
+	<div id="ball"></div>
+
+	<script>
+		var ball = document.getElementById("ball");
+		ball.animate([{
+			bottom: '0px',
+			height: '90px',
+			offset: 0
+		}, {
+			bottom: '0px',
+			height: '160px',
+			offset: 0.1
+		}, {
+			bottom: '50%',
+			height: '160px',
+			offset: 1
+		}], {
+			duration: 1000,
+			iterations: Infinity,
+			fill: 'forwards',
+			direction: 'alternate',
+			easing: 'ease-out',
+			delay: 0
+		});
+	</script>
+
+
+</body>
+
+</html>

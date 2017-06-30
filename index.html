@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Web aniamation</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Web  Animations API </h1>
+					<p>Web Animations is a new JavaScript API for driving animated content on the web</p>
+
+				</section>
+				<section>
+					<section id="fragments">
+						<h2>Animation Model</h2>
+               <div class="fragments img fade-up">
+						   <img src="img/Clock-PNG-Image.png" width="200" class="fragment"/>
+						<h4 class="fragment fade-up">Timing Model</h4>
+						<p class="fragment fade-up ">(the when)</p>
+					</div>
+					<div class="fragments img fade-up">
+							<img src="img/giphy.gif" width="350" class="fragment fade-up"/>
+								<h4 class="fragment fade-up">Animation Model</h4>
+								<p class="fragment  fade-up ">(the what)</p>
+					</div>
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section class="paraSize">
+						<h2>Creating a Keyframe Animation</h2>
+						<p>The animate function takes two parameters, an array of KeyframeEffects and AnimationEffectTimingProperties options.</p>
+					    <h5>Syntax</h5>
+						 <pre > var element = document.getElementById("animate");</pre>
+						 <pre class="fragment highlight-red"> var animation = element.animate(keyframeEffect,timeline);</pre>
+
+
+					</section>
+					<section class="paraSize">
+						<h5>KeyframeEffects</h5>
+						 <p>The target KeyframeEffect to assign to the animation.</p>
+						 <pre>var animation = element.animate([
+{ transform: 'scale(1)', opacity: 1 },
+{ transform: 'scale(.5)', opacity: .5 },
+{ transform: 'scale(.667)', opacity: .667 },
+{ transform: 'scale(.6)', opacity: .6 }
+]);</pre>
+<h5>timeline</h5>
+<p>Specifies the timeline with which to associate the animation.</p>
+<pre>var animation = element.animate([], {
+    duration: 700, //milliseconds
+    easing: 'ease-in-out', //'linear', a bezier curve, etc.
+    delay: 10, //milliseconds
+    iterations: Infinity, //or a number
+    direction: 'alternate', //'normal', 'reverse', etc.
+    fill: 'forwards' //'backwards', 'both', 'none', 'auto'
+  });</pre>
+					</section>
+				</section>
+				<section>
+					<div class="leftDiv">
+					<h2>Basic Animation</h2>
+					 <pre>
+var ball = document.getElementById("ball");
+ ball.animate([
+ { bottom:'0px',height: '90px', offset: 0 },
+ { bottom:'0px',height: '160px', offset: 0.1 },
+ { bottom:'50%',height: '160px', offset: 1 }
+ ],
+ { duration:1000,
+ iterations:Infinity,
+ fill:'forwards',
+ direction:'alternate',
+ easing:'ease-out',
+ delay:0
+ });
+					 </pre>
+				 </div>
+				 <div class="rightDiv">
+					  <iframe src="basic-animation.html" class="iframe fragment  fade-up"></iframe>
+				</div>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section class="sectionStyle">
+					<section>
+						<div class="leftDiv">
+						<h2>Animation Methods</h2>
+						<h6>Animation.cancel()</h6>
+<p>Clears all keyframeEffects caused by this animation and aborts its playback.</p>
+<h6>Animation.finish()</h6>
+<p>Seeks either end of an animation, depending on whether the animation is playing or reversing.</p>
+<h6>Animation.pause()</h6>
+<p>Suspends playing of an animation.</p>
+<h6>Animation.play()</h6>
+<p>Starts or resumes playing of an animation, or begins the animation again if it previously finished.</p>
+<h6>Animation.reverse()</h6>
+<p>Reverses playback direction, stopping at the start of the animation. If the animation is finished or unplayed, it will play from end to beginning.</p>
+</div>
+		<div class="rightDiv">
+			 <iframe src="animation-method.html" class="iframe"></iframe>
+		</div>
+					</section>
+
+				</section>
+
+		<section class="sectionStyle">
+							<h2>Animation Properties</h2>
+			<div class="leftDiv">
+
+						<h6>Animation.currentTime</h6>
+						<h6>Animation.effect</h6>
+						<h6>Animation.finished</h6>
+						<h6>Animation.playState</h6>
+						<h6>Animation.playbackRate</h6>
+						<h6>Animation.ready</h6>
+						<h6>Animation.startTime</h6>
+						<h6>Animation.timeline</h6>
+</div>
+
+
+
+
+				</section>
+
+            		<section class="sectionStyle">
+							  <iframe  src="sequence.html" style="width:100%;height:100vh;top: 0;"></iframe>
+						</section>
+						<section>
+							 <h2>Browser Compatibility</h2>
+							 <div classs=""><img src="img/comparbility.jpg"/></div>
+						</section>
+					 <section>
+						  <section>
+						 <h2>polyfill</h2>
+						 <p>The polyfill is a JavaScript implementation of the Web Animations API.
+							 It is supported on modern versions of all major browsers, including:</p>
+							<p class="fragment fade-up ">Chrome</p>
+							<p class="fragment fade-up ">Firefox 27+</p>
+							<p class="fragment fade-up ">IE10+ (including Edge)</p>
+							<p class="fragment fade-up ">Safari (iOS) 7.1+</p>
+							<p class="fragment fade-up ">Safari (Mac) 9+</p>
+						</section>
+							<section>
+								<p>web-animations.min.js</p>
+								<p>web-animations-next.min.js</p>
+								<p>web-animations-next-lite.min.js</p>
+							</section>
+							<section>
+								 <div class=""><img src="img/comp.jpg" width="700"/></div>
+							</section>
+					 </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

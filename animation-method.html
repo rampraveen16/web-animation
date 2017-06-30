@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>web animation</title>
+	<script type="text/javascript" src="https://cdn.rawgit.com/web-animations/web-animations-js/master/web-animations-next.min.js"></script>
+	<style>
+
+#ball {
+    background: Chocolate;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    bottom: 0;
+    left:0%;
+ }
+  a {
+text-decoration: none;
+ text-transform: capitalize;
+ background: #635d58;
+ padding: 10px 10px;
+ width: 72px;
+ display: inline-block;
+ text-align: center;
+ color: #000;
+ margin-bottom: 10px;
+  }
+  div {
+  	 margin: 10%;
+
+  }
+	</style>
+</head>
+
+<body>
+
+  	<div id="ball"></div>
+	<a href="#" id="play">play</a>
+	<a href="#" id="pause">pause</a>
+	<a href="#" id="cancel">cancel</a>
+	<a href="#" id="finish">finish</a>
+	<a href="#" id="playState">playstate</a>
+	<a href="#" id="fast">faster</a>
+   <a href="#" id="slow">slow</a>
+	<a href="#" id="reverse">reverse</a>
+	<script>
+	   var ball = document.getElementById("ball");
+           var ballAnimate = ball.animate([ { bottom:'0px',height: '90px', offset: 0 },
+             { bottom:'0px',height: '160px', offset: 0.1 },
+           { bottom:'50%',height: '160px', offset: 1 }
+      ],
+     {
+	  duration:1000,
+	  iterations:Infinity,
+	  fill:'forwards',
+	  direction:'alternate',
+	  easing:'ease-out',
+	  delay:0
+     });
+	   document.getElementById("play").addEventListener("click",function(){
+        ballAnimate.play();
+		});
+		document.getElementById("pause").addEventListener("click",function(){
+        ballAnimate.pause();
+		});
+		document.getElementById("cancel").addEventListener("click",function(){
+        ballAnimate.cancel();
+		});
+		document.getElementById("finish").addEventListener("click",function(){
+        ballAnimate.finish();
+		});
+		document.getElementById("playState").addEventListener("click",function(){
+         console.log(ballAnimate.playState);
+		});
+		document.getElementById("fast").addEventListener("click",function(){
+			ballAnimate.playbackRate++;
+
+		});
+		document.getElementById("slow").addEventListener("click",function(){
+			ballAnimate.playbackRate--;
+         if(ballAnimate.playbackRate==0){
+				ballAnimate.playbackRate= 1;
+			}
+		});
+		document.getElementById("reverse").addEventListener("click",function(){
+          ballAnimate.reverse()
+		});
+	</script>
+
+
+</body>
+
+</html>
